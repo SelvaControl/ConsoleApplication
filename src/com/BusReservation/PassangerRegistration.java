@@ -7,7 +7,9 @@ public class PassangerRegistration {
 	static HashMap<String, String> userDetails = new HashMap<>();
 	static Scanner scanner = new Scanner(System.in);
 	static BusBooking busdetail = new BusBooking();
-
+	static StoringData storeData = new StoringData();
+	
+	
 	static void userRegistartions() {
 		String userName;
 		String userPassword;
@@ -46,7 +48,8 @@ public class PassangerRegistration {
 	public static void usersList() {
 		 try {
 			 System.out.println("\nRegistered Users:");
-			 userDetails.forEach((username, password) -> System.out.println(" - " + username));
+//			 userDetails.forEach((username, password) -> System.out.println(" - " + username));
+			 storeData.viewFiles();
 			 System.out.println();
 	        } catch (Exception e) {
 	            System.out.println("An error occurred while viewing user List: " + e.getMessage());
@@ -96,7 +99,9 @@ public class PassangerRegistration {
 
 	static void storedDetails(String userName, String userPassword) {
 		 try {
+			 storeData.fileStoring(userName, userPassword);
 			 userDetails.put(userName, userPassword);
+			 
 	        } catch (Exception e) {
 	            System.out.println("An error occurred while storing user details: " + e.getMessage());
 	        }
